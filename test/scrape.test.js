@@ -18,7 +18,7 @@ test( "form query with symbol characters [unit]", t => {
   t.is( query, result );
 } );
 
-// getSearch
+// scrape.getSearch
 test( "get results for query", async t => {
   const search = scrape.formQuery( "100 bullets 2014" );
   const result = [
@@ -54,7 +54,7 @@ test( "get search with 2nd page", async t => {
     .then( results => t.deepEqual( results[results.length - 1], result ) );
 } );
 
-// getComic
+// scrape.getComic
 test( "get comic page info", async t => {
   const url = "https://getcomics.info/other-comics/oblivion-song-7-2018/";
   const result = {
