@@ -1,8 +1,6 @@
 #! /usr/bin/env node
 
 const meow = require( "meow" );
-
-const lib = require( "../lib" );
 const log = require( "../lib/log" );
 const commands = require( "../lib/commands" );
 
@@ -12,7 +10,7 @@ const cli = meow( `Usage
   $ getcomics-dl
 
 Commands
-  search Search for comics  
+  s, search Search for comics  
 
 Examples
  $ getcomics-dl
@@ -50,6 +48,7 @@ switch ( args._[0] ) {
   case "config":
     commands.config( args );
     break;
+  case "s":
   case "search":
     commands.search( args );
     break;
@@ -57,5 +56,11 @@ switch ( args._[0] ) {
     commands.search( args );
 }
 
-process.on( "unhandledRejection", ( err ) => { throw err; } );
+process.on( "unhandledRejection", ( err ) => {
+  if ( err.code === "ENOTFOUND" ) {
+    log.printPrompt( "There is no internet connection." );
+    process.exit();
+  } else
+    throw err;
+} );
 
