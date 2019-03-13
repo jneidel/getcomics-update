@@ -4,8 +4,6 @@ const fs = require( "fs" );
 const chalk = require( "chalk" );
 const search = require( "../lib/search" );
 
-/* Edit setup here */
-
 /* Array of comics to check for updates
 
   Structure:
@@ -28,6 +26,8 @@ const comics = require( "../comics.json" );
  */
 const updatesFile = "/home/jneidel/comics/updates";
 
+// Remove annotated console.log lines below to make script silent
+
 comics.forEach( c => main( c[0], c[1] ) );
 
 async function main( value, n ) {
@@ -48,7 +48,7 @@ async function main( value, n ) {
 
   if ( data.length !== 0 ) {
     // Print new comics
-    console.log( `${chalk.red( "New:" )}      ${data.join( "\r\n" )}` );
+    console.log( `${chalk.red( "New:" )}      ${data.join( "\n" )}` );
     // Write new comics to file
     data.forEach( x => fs.appendFileSync( updatesFile, `${x}\n` ) );
   }
