@@ -10,7 +10,7 @@ Originally a getcomics.info downloader, [but due to a few problems](https://gith
 
 Q: Why is this repo so sloppy?
 
-A: This is not supposed to be a big project and the current description should be enough to get a [Turing Complete User](http://contemporary-home-computing.org/turing-complete-user/) started.
+A: These are just the leftovers of a failed project, which I adapted to be of some use to me. And the current description should be enough to get a [Turing Complete User](http://contemporary-home-computing.org/turing-complete-user/) started.
 
 ## Features
 
