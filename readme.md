@@ -22,8 +22,8 @@ A: This is not supposed to be a big project and the current description should b
 **Clone the repo:**
 
 ```bash
-git clone <repo>
-cd <repo>
+git clone git@github.com:jneidel/getcomics-update.git
+cd getcomics-update
 npm install
 ```
 
