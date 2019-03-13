@@ -29,6 +29,8 @@
     "chalk": "^2.4.1",
     "cheerio": "^1.0.0-rc.2",
     "execution-time": "^1.2.0",
+    "expand-home-dir": "0.0.3",
+    "file-exists": "^5.0.1",
     "follow-redirects": "^1.5.9",
     "inquirer": "^6.2.0",
     "log-update": "^2.3.0",

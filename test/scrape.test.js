@@ -59,14 +59,24 @@ test( "get comic page info", async t => {
   const url = "https://getcomics.info/other-comics/oblivion-song-7-2018/";
   const result = {
     url,
-    //down : "http://weekly1.comicfiles.ru/2018.09.12/Up2/Oblivion%20Song%20By%20Kirkman%20%2526%20De%20Felici%20007%20%282018%29%28Digital%29%28TCHQ%29.cbz", Old one
-    down: "https://getcomics.info/go.php-url=/aHR0cDovL3dlZWtseTEuY29taWNmaWxlcy5ydS8yMDE4LjA5LjEyL1VwMi9PYmxpdmlvbiUyMFNvbmclMjBCeSUyMEtpcmttYW4lMjAlMjUyNiUyMERlJTIwRmVsaWNpJTIwMDA3JTIwJTI4MjAxOCUyOSUyOERpZ2l0YWwlMjklMjhUQ0hRJTI5LmNieg==",
+    // down : "http://weekly1.comicfiles.ru/2018.09.12/Up2/Oblivion%20Song%20By%20Kirkman%20%2526%20De%20Felici%20007%20%282018%29%28Digital%29%28TCHQ%29.cbz", Old one
+    down : "https://getcomics.info/go.php-url=/aHR0cDovL3dlZWtseTEuY29taWNmaWxlcy5ydS8yMDE4LjA5LjEyL1VwMi9PYmxpdmlvbiUyMFNvbmclMjBCeSUyMEtpcmttYW4lMjAlMjUyNiUyMERlJTIwRmVsaWNpJTIwMDA3JTIwJTI4MjAxOCUyOSUyOERpZ2l0YWwlMjklMjhUQ0hRJTI5LmNieg==",
     title: "Oblivion Song #7 (2018)",
     desc : "In the wake of last issue’s startling revelation, Nathan Cole’s world comes crashing down around him. For the sake of two worlds, he must pick up the pieces and carry on.",
-    zippy: "https://getcomics.info/go.php-url=/aHR0cHM6Ly93d3c0MS56aXBweXNoYXJlLmNvbS92L2RqZXNHWDloL2ZpbGUuaHRtbA=="
+    zippy: "https://getcomics.info/go.php-url=/aHR0cHM6Ly93d3c0MS56aXBweXNoYXJlLmNvbS92L2RqZXNHWDloL2ZpbGUuaHRtbA==",
   };
 
   await scrape.getComic( url )
     .then( r => t.deepEqual( result, r ) );
+} );
+
+// scrape.getZippy
+test( "getZippy", async t => {
+  // const url = "https://getcomics.info/go.php-url=/aHR0cHM6Ly93d3c0Mi56aXBweXNoYXJlLmNvbS92L2NkU1hadU1ML2ZpbGUuaHRtbA=="
+  const url = "https://getcomics.info/go.php-url=/aHR0cDovL3d3dy5tZWRpYWZpcmUuY29tL2ZpbGUvMWZjdDlnNHB5aGg5MmNkL09ibGl2aW9uX1NvbmdfMDExXyUyNTI4MjAxOSUyNTI5XyUyNTI4RGlnaXRhbCUyNTI5XyUyNTI4Wm9uZS1FbXBpcmUlMjUyOS5jYnIvZmlsZQ==";
+  const result = "https://www42.zippyshare.com/d/cdSXZuML/23/Oblivion%20Song%20011%20%282019%29%20%28Digital%29%20%28Zone-Empire%29.cbr";
+
+  await scrape.getZippy( url )
+    .then( r => t.equal( result, r ) );
 } );
 

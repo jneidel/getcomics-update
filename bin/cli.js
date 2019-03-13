@@ -7,10 +7,10 @@ const commands = require( "../lib/commands" );
 /* Cli entry point */
 
 const cli = meow( `Usage
-  $ getcomics-dl
+  $ getcomics-dl <comic>
 
 Commands
-  s, search Search for comics  
+  <comic> Search for comic
 
 Examples
  $ getcomics-dl
@@ -22,7 +22,12 @@ Examples
 For the documentation please refer to:
 https://github.com/jneidel/getcomics-dl`, {
   description: "getcomics-dl: 💾 CLI for comfortable comic download",
-  flags      : {},
+  flags      : {
+    raw: {
+      type   : "boolean",
+      default: false,
+    },
+  },
 } );
 
 // Clean up input
@@ -47,10 +52,6 @@ if ( args._.length === 0 ) {
 switch ( args._[0] ) {
   case "config":
     commands.config( args );
-    break;
-  case "s":
-  case "search":
-    commands.search( args );
     break;
   default:
     commands.search( args );
