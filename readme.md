@@ -1,24 +1,62 @@
-# DISCONTINUED: getcomics-dl
+# getcomics-update
 
-> ~~💾 CLI for comfortable comic download~~
+> Check getcomics.info for updates on a list of comics
 
-![Status](https://img.shields.io/badge/status-discontinued-red.svg?style=flat-square)
-[![Travis Build Status](https://img.shields.io/travis/jneidel/getcomics-dl.svg?style=flat-square)](https://travis-ci.org/jneidel/getcomics-dl)
 [![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=flat-square)](https://github.com/jneidel/getcomics-dl/blob/master/license)
 
-~~Not ready for release yet. In the future this CLI will be like [jneidel/mangareader-dl](https://github.com/jneidel/mangareader-dl) but for [getcomics.info](https://getcomics.info).~~
+Originally a getcomics.info downloader, [but due to a few problems](https://github.com/jneidel/getcomics-dl/tree/f78e7934e74296e81384de30f4a6427ce0c4149c#readme) it's not possible right now.
 
-I've tested downloading and it's totally unreliable. The problem being that sometimes requests will be deemed 'suspicous', redirecting the request. And as all links on the site go through php redirects, so this will happen a lot. Additionally all of the source providers are hard to scrape, hiding direct access to the file link, with the getcomics download being extremly slow.
+<br>
 
-I'll fix this cli up to be an easy search interface, as unfortunatly more is not possible right now.
+Q: Why is this repo so sloppy?
+
+A: This is not supposed to be a big project and the current description should be enough to get a [Turing Complete User](http://contemporary-home-computing.org/turing-complete-user/) started.
 
 ## Features
 
-- Search for comics
-- Subscribe to (monthly) comics
+- Subscribe to regular issues (format: `{title} #{issue-nr} ({year})`)
 - Check subscribed comics for updates
-- ~~Easily update subscribed comics~~
-- ~~Download using wget~~
+
+## Usage
+
+**Clone the repo:**
+
+```bash
+git clone <repo>
+cd <repo>
+npm install
+```
+
+**Fill comic list:**
+
+`comics.json` (see [bin/new.js](bin/new.js) for more info):
+
+```json
+[
+  [ "Blackbird", 6 ],
+  [ "Crowded", 6 ],
+  [ "Die!Die!Die!", 8 ],
+  [ "Oblivion Song", 13 ],
+  [ "Sex Criminals", 25 ],
+  [ "Burnouts", 5 ]
+]
+```
+
+Entries have to be:
+
+- case sensitive
+- complete
+
+**To run:**
+
+
+```bash
+# in repo
+./bin/new.js
+
+#or
+node bin/new.js
+```
 
 ## Related
 
@@ -27,3 +65,4 @@ I'll fix this cli up to be an easy search interface, as unfortunatly more is not
 ## License
 
 MIT © [Jonathan Neidel](https://jneidel.com)
+
