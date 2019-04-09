@@ -18,7 +18,7 @@ const search = require( "../lib/search" );
 
   This file has to be manually updated after running the script.
  */
-const comics = require( "../comics.json" );
+const comics = require( "../comics" );
 
 /* Updates file, new updates are added to this file
 
@@ -32,7 +32,7 @@ comics.forEach( c => main( c[0], c[1] ) );
 
 async function main( value, n ) {
   // Print which comics are being checked
-  console.log( chalk.green( "Checking:" ), value, "at", n );
+  //console.log( chalk.green( "Checking:" ), value, "at", n );
 
   const args = [ value ];
   let data = await search( args );
