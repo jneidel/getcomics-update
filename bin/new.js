@@ -33,6 +33,7 @@ comics.forEach( c => main( c[0], c[1] ) );
 async function main( value, n ) {
   // Print which comics are being checked
   //console.log( chalk.green( "Checking:" ), value, "at", n );
+  // (to fix spacing adjust spaces in line 52)
 
   const args = [ value ];
   let data = await search( args );
@@ -48,9 +49,10 @@ async function main( value, n ) {
 
   if ( data.length !== 0 ) {
     // Print new comics
-    console.log( `${chalk.red( "New:" )}      ${data.join( "\n" )}` );
+    console.log( `${chalk.red( "New:" )} ${data.join( "\n     " )}` );
     // Write new comics to file
-    data.forEach( x => fs.appendFileSync( updatesFile, `${x}\n` ) );
+    data.forEach( x => fs.appendFileSync( updatesFile,
+      `${x.replace( /\(\d+\):\shttp.*$/g, "" )}\n` ) ); // Remove year nr and link from logs
   }
 }
 
