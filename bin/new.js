@@ -28,7 +28,9 @@ const updatesFile = "/home/jneidel/comics/updates";
 
 // Remove annotated console.log lines below to make script silent
 
-comics.forEach( c => main( c[0], c[1] ) );
+comics
+  .filter( c => !c[2] ) /* 3rd value (skip) not true */
+  .forEach( c => main( c[0], c[1] ) );
 
 async function main( value, n ) {
   // Print which comics are being checked
