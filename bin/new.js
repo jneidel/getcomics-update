@@ -3,6 +3,7 @@
 const fs = require( "fs" );
 const chalk = require( "chalk" );
 const search = require( "../lib/search" );
+const formQuery = require( "../lib/scrape" ).formQuery;
 
 /* Array of comics to check for updates
 
@@ -51,7 +52,7 @@ async function main( value, n ) {
 
   if ( data.length !== 0 ) {
     // Print new comics
-    console.log( `${chalk.red( "New:" )} ${data.join( "\n     " )}` );
+console.log( `${chalk.red( "New:" )} ${data.map( x => x.split( ":" )[0] ).map( x => `${x} - ${formQuery( x )}` ).join( "\n     " )}` );
     // Write new comics to file
     data.forEach( x => fs.appendFileSync( updatesFile,
       `${x.replace( /\(\d+\):\shttp.*$/g, "" )}\n` ) ); // Remove year nr and link from logs
