@@ -24,7 +24,7 @@ const comics = require( "../comics" );
 
   To deactive remove the line with 'fs.appendFileSync()' toward the end of this file
  */
-const updatesFile = "/home/jneidel/comics/updates";
+const updatesFile = `${process.env.HOME}/ct/comics/updates`;
 
 // Remove annotated console.log lines below to make script silent
 
