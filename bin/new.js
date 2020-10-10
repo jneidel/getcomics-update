@@ -55,7 +55,7 @@ async function main( value, n ) {
 console.log( `${chalk.red( "New:" )} ${data.map( x => x.split( ":" )[0] ).map( x => `${x} - ${formQuery( x )}` ).join( "\n     " )}` );
     // Write new comics to file
     data.forEach( x => fs.appendFileSync( updatesFile,
-      `${x.replace( /\(\d+\):\shttp.*$/g, "" )}\n` ) ); // Remove year nr and link from logs
+      `${x.replace( /\(\d+\).*/g, "" )}\n` ) ); // Remove year nr and link from logs
   }
 }
 
