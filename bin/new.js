@@ -14,29 +14,27 @@ const formQuery = require( "../lib/scrape" ).formQuery;
     ]
 
   Case matters, full title, only works for comics of this format:
-    'Gunning For Hits #3 (2019)'
+    'The Walking Dead Deluxe #1 (2020)'
     '{title} #{issue-nr}'
 
   This file has to be manually updated after running the script.
  */
 const comics = require( "../comics" );
 
-/* Updates file, new updates are added to this file
+/* Update log file, new updates are added to this file
 
   To deactive remove the line with 'fs.appendFileSync()' toward the end of this file
  */
 const updatesFile = `${process.env.HOME}/ct/comics/updates`;
 
-// Remove annotated console.log lines below to make script silent
-
 comics
-  .filter( c => !c[2] ) /* 3rd value (skip) not true */
+  .filter( c => !c[2] )
   .forEach( c => main( c[0], c[1] ) );
 
 async function main( value, n ) {
   // Print which comics are being checked
   //console.log( chalk.green( "Checking:" ), value, "at", n );
-  // (to fix spacing adjust spaces in line 52)
+  // (to fix spacing adjust spaces in line 53)
 
   const args = [ value ];
   let data = await search( args );
@@ -52,7 +50,8 @@ async function main( value, n ) {
 
   if ( data.length !== 0 ) {
     // Print new comics
-console.log( `${chalk.red( "New:" )} ${data.map( x => x.split( ":" )[0] ).map( x => `${x} - ${formQuery( x )}` ).join( "\n     " )}` );
+    console.log( `${chalk.red( "New:" )} ${data.map( x => x.split( ":" )[0] ).map( x => `${x} - ${formQuery( x )}` ).join( "\n     " )}` );
+
     // Write new comics to file
     data.forEach( x => fs.appendFileSync( updatesFile,
       `${x.replace( /\(\d+\).*/g, "" )}\n` ) ); // Remove year nr and link from logs

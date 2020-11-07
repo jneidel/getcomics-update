@@ -9,7 +9,9 @@
     "email": "github@jneidel.com",
     "url": "https://jneidel.com"
   },
-  "scripts": {},
+  "scripts": {
+    "check": "./bin/new.js"
+  },
   "main": "bin/new.js",
   "bin": {
     "comicup": "bin/new.js"
